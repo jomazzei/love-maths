@@ -15,6 +15,13 @@ document.addEventListener("DOMContentLoaded", function () {
         })
     }
 
+    // checks if Enter was pressed while the answer box is active
+    document.getElementById("answer-box").addEventListener("keydown", function(event) {
+        if (event.key === "Enter") { 
+            checkAnswer();
+        }
+    })
+
     runGame("addition");
 })
 
@@ -24,6 +31,9 @@ document.addEventListener("DOMContentLoaded", function () {
  */
 
 function runGame(gameType) {
+
+    document.getElementById("answer-box").value = ""; // empties answer box each time this is called.
+    document.getElementById("answer-box").focus(); // sets the box as active, ready for input immediately
 
     // Create the random numbers for game
     let num1 = Math.ceil(Math.random() * 25 + (Math.random() * 10));
